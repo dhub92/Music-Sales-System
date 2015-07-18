@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/templateLogin.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.articulos']}" />
+	</ui:define>
+
+	<f:metadata>
+		<f:viewParam name="item" value="#{itemCarritoMB.idSelecionado}" />
+        <f:event type="preRenderView" listener="#{itemCarritoMB.obtener}" />
+	</f:metadata>	
+	
+	<ui:define name="content">
+
+		<div style="border-bottom: 1px solid #E5E5E5;">
+			<h3>
+				<h:outputText value="Item" />
+				<small> <h:outputText value="Eliminar" /></small>				
+			</h3>
+		</div>
+		
+		<h5>¿Seguro que desea eliminar el item del Carrito?</h5>
+		
+		<h:form>
+        	<p:panelGrid columns="2" >
+        		<h:commandButton value="Si" immediate="true" action="#{itemCarritoMB.eliminar}" styleClass="btn btn-success">
+				</h:commandButton>
+				<h:button value="Cancelar" outcome="listaItemsCarrito" styleClass="btn">
+				</h:button>
+			</p:panelGrid>
+		</h:form>
+		
+
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>

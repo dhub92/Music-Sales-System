@@ -1,0 +1,36 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+    
+    <div class="logo">
+    	<h:link outcome="listaArticulosLogin">
+    		<img src="resources/img/logo.jpg" alt="Music Sales System" title="Music Sales System" />
+    	</h:link>
+    </div>	
+	
+	<div>
+		
+		<h:form>
+			
+			<h:panelGrid columns="5">
+			
+					<h:inputText value="#{albumMB.busqueda}" label="" styleClass="input-large">
+					</h:inputText>	
+		
+					<h:commandButton value="#{msg['button.buscar']}" action="#{albumMB.buscarLogin}" disabled="false" style="width: 35px; height: 35px;" image="resources/img/buscar.png">
+					</h:commandButton>
+					
+					<h:button value="#{msg['button.buscar']}" outcome="listaItemsCarrito" style="width: 35px; height: 35px;" image="resources/img/carrito.jpg">
+					</h:button>
+		
+					<h:outputText value="Bienvenido #{clienteMB.cliente.nombre}" />
+		
+					<h:link outcome="listaArticulos" value="Cerrar Sesión">				
+            		</h:link>
+            	</h:panelGrid>		
+		</h:form>
+	</div>
+</ui:fragment>

@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/templateLogin.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.articulos']}" />
+	</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{articuloMB.reset}" />
+	</f:metadata>
+
+	<ui:define name="content">
+		<p:tabView>
+        	<p:tab title="Álbumes">
+            	
+            	<p:dataGrid columns="2" value="#{albumMB.dataAlbumes}" var="album" >
+        			<p:panelGrid columns="2" >
+            			<f:facet name="header">
+                			<h:link outcome="paginaAlbum">
+                				<img src="#{album.fotoAlbum}" alt="#{album.tituloAlbum}"/>
+                				<f:param name="id" value="#{album.id}" />
+                			</h:link>
+            			</f:facet>
+ 
+            			<h:outputText value="Título:" />
+            			<h:outputText value="#{album.tituloAlbum}" />
+ 
+            			<h:outputText value="Artista:" />
+            			<h:outputText value="#{album.artistaAlbum}" />
+ 
+            			<h:outputText value="Género:" />
+            			<h:outputText value="#{album.generoAlbum}" />
+ 
+            			<h:outputText value="Precio: " />
+            			<h:outputText value="#{album.precioAlbum}" />           			
+       				 </p:panelGrid>        			
+    			</p:dataGrid>
+    			        
+        	</p:tab>
+        	<p:tab title="Artistas">
+        	
+        	<p:dataGrid columns="2" value="#{artistaMB.dataArtistas}" var="artista" >
+        			<p:panelGrid columns="2" >
+            			<f:facet name="header">
+                			<img src="#{artista.fotoArtista}" alt="#{artista.nombreArtista}"/>
+                			<!--<p:graphicImage name=""/>-->
+            			</f:facet>
+ 
+            			<h:outputText value="Nombre:" />
+            			<h:outputText value="#{artista.nombreArtista}" />
+ 
+            			<h:outputText value="Género:" />
+            			<h:outputText value="#{artista.generoArtista}" />          			
+       				 </p:panelGrid>        			
+    			</p:dataGrid>
+            
+        	</p:tab>        
+    	</p:tabView>
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>

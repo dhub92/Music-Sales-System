@@ -1,0 +1,66 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:form styleClass="form-horizontal">
+    	<fieldset>
+    		<legend><h3><h:outputText value="#{msg['label.cliente']}" /> <small> <h:outputText value="#{subtitle}" /></small></h3></legend>
+    		<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.nombre']}" /></label>
+	    		<div class="controls">
+	    			<h:inputText value="#{clienteMB.cliente.nombre}" label="#{msg['label.cliente.nombre']}" required="true" styleClass="input-large">
+	    				<f:validateLength minimum="5" maximum="60" />
+	    			</h:inputText>
+	    		</div>
+    		</div>
+    		
+    		<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.correo']}" /></label>
+	    		<div class="controls">
+	    			<h:inputText value="#{clienteMB.cliente.correo}" label="#{msg['label.cliente.correo']}" required="true" validatorMessage="Correo Electrónico: Error de validación: correo electrónico no válido." styleClass="input-large">
+	    				<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" /> 
+	    			</h:inputText>
+	    		</div>
+	    	</div>
+	    	
+	    	<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.password']}" /></label>
+	    		<div class="controls">
+	    			<p:password id="pwd1" value="#{clienteMB.cliente.password}" match="pwd2" label="#{msg['label.cliente.password']}" required="true" />
+	    		</div>
+	    	</div>
+	    	
+	    	<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.passwordretype']}" /></label>
+	    		<div class="controls">
+	    		<p:password id="pwd2" value="#{clienteMB.cliente.password}" label="#{msg['label.cliente.passwordretype']}" required="true" />	
+	    		</div>
+	    	</div>
+	    		    	
+    		<p:captcha id="captcha" label="captcha"></p:captcha>
+    	</fieldset>
+    	
+    	<!-- Para validar contraseñas
+    		#{clienteMB.cliente.password}
+    		#{msg['label.cliente.password']}
+    		#{msg['label.cliente.passwordretype']}    		
+        	<p:password id="pwd1" value="#{passwordView.password5}" match="pwd2" label="Password 1" required="true" />        	
+        	<p:password id="pwd2" value="#{passwordView.password5}" label="Password 2" required="true" />
+    	-->
+    	
+    	
+    	<div class="control-group">
+    		<div class="controls">    			 
+    			<h:commandButton value="#{msg['button.guardar']}" action="#{clienteMB.guardar}" styleClass="btn btn-success"/>
+    			<h:button value="#{msg['button.cancelar']}" outcome="listaArticulos" styleClass="btn"/>    			
+    		</div>
+    	</div>
+    </h:form>
+    
+    <h:panelGroup layout="block" class="alert alert-error" rendered="#{facesContext.validationFailed or not empty facesContext.messageList }">
+    	<h:messages showDetail="true" showSummary="false" />
+    </h:panelGroup>
+    
+</ui:fragment>

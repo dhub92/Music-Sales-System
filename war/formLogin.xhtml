@@ -1,0 +1,39 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:form styleClass="form-horizontal">
+    	<fieldset>
+    		<legend><h3><h:outputText value="#{msg['label.cliente']}" /> <small> <h:outputText value="#{subtitle}" /></small></h3></legend>
+    		<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.correo']}" /></label>
+	    		<div class="controls">
+	    			<h:inputText value="#{clienteMB.cliente.correo}" label="#{msg['label.cliente.correo']}" required="true" styleClass="input-large">	    				
+	    			</h:inputText>
+	    		</div>
+	    	</div>
+	    	
+	    	<div class="control-group">
+	    		<label class="control-label"><h:outputText value="#{msg['label.cliente.password']}" /></label>
+	    		<div class="controls">
+	    			<p:password value="#{clienteMB.cliente.password}" label="#{msg['label.cliente.password']}" required="true" />
+	    		</div>
+	    	</div>	    	
+	    	
+    	</fieldset>    	
+    	
+    	<div class="control-group">
+    		<div class="controls">    			 
+    			<h:commandButton value="#{msg['button.enviar']}" action="#{clienteMB.permitirAcceso}" styleClass="btn btn-success"/>
+    			<h:button value="#{msg['button.cancelar']}" outcome="listaArticulos" styleClass="btn"/>    			
+    		</div>
+    	</div>
+    </h:form>
+    
+    <h:panelGroup layout="block" class="alert alert-error" rendered="#{facesContext.validationFailed or not empty facesContext.messageList }">
+    	<h:messages showDetail="true" showSummary="false" />
+    </h:panelGroup>
+    
+</ui:fragment>

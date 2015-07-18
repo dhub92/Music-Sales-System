@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/layout/template.xhtml">
+    	<ui:define name="pageTitle"><h:outputText value="#{msg['page.title.incluir.cliente']}" /></ui:define>
+    	
+    	<f:metadata>
+            <f:event type="preRenderView" listener="#{clienteMB.reset}" />
+        </f:metadata>
+    	
+		<ui:define name="content">
+			<div style="border-bottom: 1px solid #E5E5E5;">
+				<h3>
+					<h:outputText value="Cliente" />
+					<small> <h:outputText value="Registro" /></small>
+				</h3>
+			</div>
+			
+			<div>
+				<h5>
+					Te has registrado satisfactoriamente, ya puedes ingresar normalmente al sistema!
+				</h5>
+			</div>
+		</ui:define>
+    </ui:composition>
+</html>

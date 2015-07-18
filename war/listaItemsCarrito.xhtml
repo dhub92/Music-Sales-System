@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/layout/templateLogin.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.articulos']}" />
+	</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{itemCarritoMB.reset}" />
+	</f:metadata>
+
+
+	<ui:define name="content">
+
+		<div style="border-bottom: 1px solid #E5E5E5;">
+			<h3>
+				<h:outputText value="Carrito" />
+				<small> <h:outputText value="Contenido" /></small>
+			</h3>
+		</div>
+
+		<h:form>
+			<h:dataTable value="#{itemCarritoMB.dataItemsCarrito}" var="itemCarrito"
+				styleClass="table table-hover">
+
+
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:outputText value="#{itemCarrito.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Título del álbum" />
+					</f:facet>
+					<h:outputText value="#{itemCarrito.nombre}" />
+				</h:column>				
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Precio" />
+					</f:facet>
+					<h:outputText value="#{itemCarrito.precio}">
+						<f:convertNumber type="currency" />
+					</h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Acciones" />
+					</f:facet>				
+					<h:link outcome="borrarItem">
+                		<h:outputText value="Eliminar" />
+                		<f:param name="item" value="#{itemCarrito.id}" />
+                	</h:link>   			
+				</h:column>
+
+			</h:dataTable>
+
+			<h:form>
+			<h:panelGrid columns="2">
+				
+				<h:outputText value="Total:" />
+            	<h:outputText value="#{itemCarritoMB.totalCarrito}">
+            		<f:convertNumber type="currency" />
+            	</h:outputText>
+            	
+				<h:commandButton value="Comprar" disabled="true" styleClass="btn btn-success">
+				</h:commandButton>
+				<h:button value="Cancelar" outcome="listaArticulosLogin" styleClass="btn">
+				</h:button>
+				
+			</h:panelGrid>
+			</h:form>
+
+		</h:form>
+
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>

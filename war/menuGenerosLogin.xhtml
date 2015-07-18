@@ -1,0 +1,52 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+	<ul class="nav nav-list" style="padding-top: 15px;">
+		<li><em><h:outputText value="Géneros" /></em></li>
+		
+		<li>
+			<h:link outcome="listaArticulosLogin" value="Gospel y espiritual">
+				<f:param name="genero" value="Gospel y espiritual" />				
+            </h:link>
+		</li>
+		
+		<li>
+			<h:link outcome="listaArticulosLogin" value="Pop">
+				<f:param name="genero" value="Pop" />				
+            </h:link>
+		</li>
+		
+		<li>
+			<h:link outcome="listaArticulosLogin" value="Rap y hip-hop">
+				<f:param name="genero" value="Rap y hip-hop" />				
+            </h:link>
+		</li>
+		
+		<li>
+			<h:link outcome="listaArticulosLogin" value="Rock">
+				<f:param name="genero" value="Rock" />				
+            </h:link>
+		</li>		
+		
+		<!--<li class="#{empty param.active || param.active == 'lista' ? 'active' : ''}">
+			<h:link outcome="listaArticulos" value="#{msg['menu.lista']}">
+				<f:param name="active" value="lista" />
+            </h:link>
+		</li>
+		<li class="#{param.active == 'incluir' ? 'active' : ''}">
+			<h:link outcome="agregarArticulo" value="#{msg['menu.agregar']}">
+				<f:param name="active" value="incluir" />
+            </h:link>
+        </li>
+		<li class="divider"></li>
+		<li class="#{param.active == 'sobre' ? 'active' : ''}">
+			<h:link outcome="sobre" value="#{msg['menu.sobre']}">
+				<f:param name="active" value="sobre" />
+            </h:link>
+		</li>-->
+	</ul>
+
+</ui:fragment>

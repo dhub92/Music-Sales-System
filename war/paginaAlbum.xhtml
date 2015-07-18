@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/templateLogin.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="#{msg['page.title.lista.articulos']}" />
+	</ui:define>
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{albumMB.idSelecionado}" />
+        <f:event type="preRenderView" listener="#{albumMB.obtener}" />
+	</f:metadata>	
+	
+	<ui:define name="content">
+
+		<div style="border-bottom: 1px solid #E5E5E5;">
+			<h3>
+				<h:outputText value="#{albumMB.album.tituloAlbum}" />
+				<small> <h:outputText value="Álbum" /></small>				
+			</h3>
+		</div>
+		
+		<p:panelGrid columns="2" >
+			<div>
+				<img src="#{albumMB.album.fotoAlbum}" alt="#{albumMB.album.tituloAlbum}"/>
+			</div>
+				
+			<div>
+				<p:panelGrid columns="2" >
+					<h:outputText value="Artista:" />
+            		<h:outputText value="#{albumMB.album.artistaAlbum}" />
+ 
+            		<h:outputText value="Género:" />
+            		<h:outputText value="#{albumMB.album.generoAlbum}" />
+ 
+            		<h:outputText value="Precio: " />
+            		<h:outputText value="#{albumMB.album.precioAlbum}" /> 
+				</p:panelGrid>
+			</div>			
+		</p:panelGrid>
+		
+		<h:form>
+        	<p:panelGrid columns="2" >
+        		<h:commandButton value="Agregar al carrito" immediate="true" action="#{albumMB.agregarItemCarrito}" styleClass="btn btn-success">
+				</h:commandButton>
+				<h:button value="Cancelar" outcome="listaArticulosLogin" styleClass="btn">
+				</h:button>
+			</p:panelGrid>
+		</h:form>
+		
+
+		<h:messages />
+	</ui:define>
+</ui:composition>
+</html>
